@@ -1,0 +1,235 @@
+<style>
+    :root {
+      --azul-trisul: #002F6C;
+      --amarelo-cta: #FFD700;
+      --branco: #FFFFFF;
+      --sombra: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+  
+    /* Container geral da seção dos corretores */
+    .corretores-container {
+      background: var(--azul-trisul);
+      color: var(--branco);
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: var(--sombra);
+    }
+    .corretores-container::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: var(--azul-trisul);
+      transform: skewY(-3deg);
+    }
+  
+    /* Estrutura do carrossel */
+    #carouselCorretores {
+      position: relative;
+    }
+    .carousel-inner {
+      padding-bottom: 2rem; /* Espaço para os indicadores */
+    }
+  
+    /* Cada carta de corretor */
+    .corretor-card {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 2rem;
+      padding: 2rem;
+    }
+  
+    /* Foto do corretor forçando a proporção 1:1 */
+    .corretor-foto {
+      width: 300px;             /* Largura fixa para desktop */
+      aspect-ratio: 1 / 1;       /* Mantém 1:1 */
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    .corretor-foto:hover {
+      transform: rotate(-2deg) scale(1.03);
+    }
+    
+    /* Informações do corretor */
+    .corretor-info {
+      flex-grow: 1;
+      min-width: 250px;
+    }
+    .corretor-info h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .corretor-info p {
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+    
+    /* Container de contatos (telefone e email) */
+    .corretor-cta {
+      width: 20%;
+      text-align: center;
+    }
+    .btn-garanta {
+      background: var(--amarelo-cta);
+      color: var(--azul-trisul);
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      border: 2px solid transparent;
+    }
+    .btn-garanta:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+      border-color: var(--branco);
+    }
+  
+    /* Indicadores (pontos) na parte inferior */
+    .carousel-indicators {
+      bottom: 20px;
+    }
+    .carousel-indicators button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--azul-trisul);
+    }
+    .carousel-indicators .active {
+      background-color: var(--amarelo-cta);
+      border: 1px solid var(--azul-trisul);
+    }
+  
+    /* Responsividade para a seção dos Corretores */
+    @media (max-width: 992px) {
+      .corretor-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        padding: 2rem 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: 2rem;
+      }
+      .corretor-foto {
+        width: 200px;       /* Menor tamanho em mobile */
+        /* A propriedade aspect-ratio continuará garantindo 1:1 */
+      }
+      .corretor-cta {
+        width: 100%;
+      }
+      /* Ajuste do container de contatos para dispositivos menores */
+      .corretor-info .d-flex {
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+      }
+      .corretor-info .d-flex i {
+        font-size: 1.2rem;
+      }
+      .corretor-info .d-flex p {
+        font-size: 0.9rem;
+        margin: 0;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .corretor-info h2 {
+        font-size: 1.6rem;
+      }
+      .corretor-info p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+  
+  <section class="corretores-container">
+    <div id="carouselCorretores" class="carousel slide" data-bs-ride="carousel">
+      <!-- Indicadores -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselCorretores" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselCorretores" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      </div>
+      
+      <!-- Slides -->
+      <div class="carousel-inner">
+        <!-- Corretor 1 -->
+        <div class="carousel-item active">
+          <div class="corretor-card">
+            <img src="corretor1.jpg" class="corretor-foto" alt="Corretor João">
+            <div class="corretor-info">
+              <h2>João Silva</h2>
+              <p class="fs-5 mb-4">Especialista em Investimentos Imobiliários</p>
+              <div class="d-flex gap-4 mb-4 flex-wrap">
+                <div>
+                  <i class="icon ion-ios-call fs-4"></i>
+                  <p class="mb-0">(11) 9999-9999</p>
+                </div>
+                <div>
+                  <i class="icon ion-ios-mail fs-4"></i>
+                  <p class="mb-0">joao@trisul.com</p>
+                </div>
+              </div>
+              <p class="text-warning fs-5">⏳ Últimas 3 unidades disponíveis!</p>
+            </div>
+            <div class="corretor-cta">
+              <a href="https://wa.me/5511999999999" class="btn-garanta">
+                <i class="icon ion-logo-whatsapp fs-4"></i>
+                Garanta seu Studio
+              </a>
+              <p class="small mt-2 text-white">Condição especial por 24h!</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Corretor 2 -->
+        <div class="carousel-item">
+          <div class="corretor-card">
+            <img src="corretor2.jpg" class="corretor-foto" alt="Corretor Maria">
+            <div class="corretor-info">
+              <h2>Maria Souza</h2>
+              <p class="fs-5 mb-4">Consultora de Negócios Premium</p>
+              <div class="d-flex gap-4 mb-4 flex-wrap">
+                <div>
+                  <i class="icon ion-ios-call fs-4"></i>
+                  <p class="mb-0">(11) 8888-8888</p>
+                </div>
+                <div>
+                  <i class="icon ion-ios-mail fs-4"></i>
+                  <p class="mb-0">maria@trisul.com</p>
+                </div>
+              </div>
+              <p class="text-warning fs-5">🎯 Taxa de Valorização 15% ao ano!</p>
+            </div>
+            <div class="corretor-cta">
+              <a href="https://wa.me/5511888888888" class="btn-garanta">
+                <i class="icon ion-logo-whatsapp fs-4"></i>
+                Investir Agora
+              </a>
+              <p class="small mt-2 text-white">Retorno garantido de 6% a.a.</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    console.log("Seção Corretores carregada.");
+  </script>
+  

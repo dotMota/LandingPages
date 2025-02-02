@@ -1,0 +1,114 @@
+<style>
+    /* Estilos específicos para a seção de tamanhos das unidades */
+    .tamanhos-unidades {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        padding: 4rem 2rem;
+    }
+
+    .box-unidade {
+        border: 3px solid var(--azul-trisul);
+        padding: 2rem;
+        text-align: center;
+        border-radius: 15px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: var(--branco);
+    }
+
+    .box-unidade:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,47,108,0.15);
+    }
+
+    .planta-container {
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-top: 1.5rem;
+    }
+
+    .planta-imagem {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .planta-container:hover .planta-imagem {
+        transform: scale(1.05);
+    }
+
+    .planta-zoom {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        background: rgba(255,255,255,0.9);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        backdrop-filter: blur(2px);
+        transition: all 0.3s ease;
+    }
+
+    .planta-container:hover .planta-zoom {
+        background: rgba(255,255,255,1);
+        transform: translateY(-5px);
+    }
+</style>
+
+<section class="tamanhos-unidades">
+    <div class="box-unidade">
+        <h3>STUDIO</h3>
+        <p>25m²</p>
+        <div class="planta-container">
+            <a href="../files/planta-studio-hd.jpg">
+                <img src="../files/planta-studio.jpg" class="planta-imagem" alt="Planta Studio">
+                <div class="planta-zoom">
+                    <i class="icon ion-ios-search"></i>
+                    Clique para ampliar
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <div class="box-unidade">
+        <h3>1 Dormitório</h3>
+        <p>34m²</p>
+        <div class="planta-container">
+            <a href="../files/planta-1dorm-hd.jpg">
+                <img src="../files/planta-1dorm.jpg" class="planta-imagem" alt="Planta 1 Dormitório">
+                <div class="planta-zoom">
+                    <i class="icon ion-ios-search"></i>
+                    Clique para ampliar
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <div class="box-unidade">
+        <h3>2 Dormitórios</h3>
+        <p>40m²</p>
+        <div class="planta-container">
+            <a href="../files/planta-2dorm-hd.jpg">
+                <img src="../files/planta-2dorm.jpg" class="planta-imagem" alt="Planta 2 Dormitórios">
+                <div class="planta-zoom">
+                    <i class="icon ion-ios-search"></i>
+                    Clique para ampliar
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Inicializa o lightbox para as plantas
+    new SimpleLightbox('.planta-container a', {
+        captionsData: 'alt',
+        captionDelay: 200,
+    });
+</script>
