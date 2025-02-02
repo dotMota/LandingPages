@@ -1,0 +1,11 @@
+:root {
+    --azul-trisul: #002F6C;
+    --amarelo-cta: #FFD700;
+    --branco: #FFFFFF;
+}
+
+/* Estilos globais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--azul-trisul);
+}
