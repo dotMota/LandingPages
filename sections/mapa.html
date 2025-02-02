@@ -1,145 +1,152 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Localização e Pontos de Interesse</title>
-    <style>
-        :root {
-            --azul-trisul: #002F6C;
-            --amarelo-cta: #FFD700;
-            --branco: #FFFFFF;
-            --sombra: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
+<style>
+    :root {
+        --azul-trisul: #002F6C;
+        --amarelo-cta: #FFD700;
+        --branco: #FFFFFF;
+        --sombra: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
 
-        /* Endereço em destaque */
-        .endereco-topo {
-            width: 100%;
-            text-align: center;
-            color: var(--amarelo-cta);
-            font-size: 1.5rem;
-            margin: 2rem 0;
-            font-weight: bold;
-        }
+    /* Endereço em destaque */
+    .endereco-topo {
+        width: 100%;
+        text-align: center;
+        color: var(--amarelo-cta);
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        font-weight: bold;
+    }
 
-        /* Container principal */
+    /* Container principal */
+    .mapa-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin: 4rem 1rem;
+    }
+
+    /* Mapa */
+    .mapa-container {
+        flex: 1;
+        min-width: 300px;
+        height: auto;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--sombra);
+    }
+
+    .mapa-container iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 400px;
+    }
+
+    /* Lista de pontos */
+    .pontos-interesse {
+        flex: 1;
+        min-width: 300px;
+        padding: 2rem;
+        background: var(--branco);
+        border-radius: 15px;
+        box-shadow: var(--sombra);
+        height: auto;
+    }
+
+    .ponto-item {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(0,47,108,0.1);
+    }
+
+    .ponto-categoria {
+        color: var(--amarelo-cta);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+    }
+
+    .ponto-tempo {
+        color: var(--azul-trisul);
+        font-weight: bold;
+    }
+
+    @media (min-width: 992px) {
         .mapa-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin: 0 1rem 4rem;
+            align-items: stretch;
         }
-
-        /* Mapa */
-        .mapa-container {
-            flex: 1;
-            min-width: 300px;
-            height: 500px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--sombra);
-        }
-
-        /* Lista de pontos */
+        
+        .mapa-container,
         .pontos-interesse {
-            flex: 1;
-            min-width: 300px;
-            padding: 2rem;
-            background: var(--branco);
-            border-radius: 15px;
-            box-shadow: var(--sombra);
+            height: auto;
+            display: flex;
+            flex-direction: column;
         }
+    }
 
-        .ponto-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(0,47,108,0.1);
+    @media (max-width: 768px) {
+        .mapa-container,
+        .pontos-interesse {
+            flex-basis: 100%;
+            margin: 0;
         }
+        
+        .endereco-topo {
+            font-size: 1.2rem;
+        }
+    }
+</style>
 
-        .ponto-categoria {
-            color: var(--amarelo-cta);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
+<section class="mapa-section">
+    <!-- Endereço em destaque -->
+    <div class="endereco-topo">
+        Rua Sud Mennucci, 185 - Vila Mariana
+    </div>
 
-        .ponto-tempo {
-            color: var(--azul-trisul);
-            font-weight: bold;
-        }
+    <!-- Mapa -->
+    <div class="mapa-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.234045102774!2d-46.63327768454357!3d-23.59218446844115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5bd2c5ff7d0d%3A0x4e0a0a7a8a7a8a7a!2sRua%20Prof.%20Sud%20Mennucci%2C%20165%20-%20Vila%20Mariana%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1716427827978!5m2!1spt-BR!2sbr"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </div>
 
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .mapa-container,
-            .pontos-interesse {
-                flex-basis: 100%;
-                margin: 0;
-            }
-            
-            .mapa-container {
-                height: 400px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <section>
-        <!-- Endereço em destaque -->
-        <div class="endereco-topo">
-            Rua Sud Mennucci, 185 - Vila Mariana
+    <!-- Lista de Pontos -->
+    <div class="pontos-interesse">
+        <h3 class="mb-4">Principais pontos próximos:</h3>
+        
+        <div class="ponto-item">
+            <div class="ponto-categoria">🚇 Metrô</div>
+            <div>Estação Vila Mariana</div>
+            <div class="ponto-tempo">5 minutos a pé</div>
         </div>
 
-        <!-- Container Mapa + Pontos -->
-        <div class="mapa-section">
-            <!-- Mapa -->
-            <div class="mapa-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.234045102774!2d-46.63327768454357!3d-23.59218446844115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5bd2c5ff7d0d%3A0x4e0a0a7a8a7a8a7a!2sRua%20Prof.%20Sud%20Mennucci%2C%20165%20-%20Vila%20Mariana%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1716427827978!5m2!1spt-BR!2sbr"
-                    width="100%"
-                    height="100%"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy">
-                </iframe>
-            </div>
-
-            <!-- Lista de Pontos -->
-            <div class="pontos-interesse">
-                <h3 class="mb-4">Principais pontos próximos:</h3>
-                
-                <div class="ponto-item">
-                    <div class="ponto-categoria">🚇 Metrô</div>
-                    <div>Estação Vila Mariana</div>
-                    <div class="ponto-tempo">5 minutos a pé</div>
-                </div>
-
-                <div class="ponto-item">
-                    <div class="ponto-categoria">🛍️ Shopping</div>
-                    <div>Shopping Vila Mariana</div>
-                    <div class="ponto-tempo">10 minutos a pé</div>
-                </div>
-
-                <div class="ponto-item">
-                    <div class="ponto-categoria">🎓 Educação</div>
-                    <div>ESPM</div>
-                    <div class="ponto-tempo">15 minutos a pé</div>
-                </div>
-
-                <div class="ponto-item">
-                    <div class="ponto-categoria">🏥 Saúde</div>
-                    <div>Vila Mariana Day Hospital</div>
-                    <div class="ponto-tempo">10 minutos a pé</div>
-                </div>
-
-                <div class="ponto-item">
-                    <div class="ponto-categoria">🎭 Cultura</div>
-                    <div>SESC Vila Mariana</div>
-                    <div class="ponto-tempo">15 minutos a pé</div>
-                </div>
-            </div>
+        <div class="ponto-item">
+            <div class="ponto-categoria">🛍️ Shopping</div>
+            <div>Shopping Vila Mariana</div>
+            <div class="ponto-tempo">10 minutos a pé</div>
         </div>
-    </section>
 
-    <script>
-        console.log('Seção Mapa carregada com sucesso!');
-    </script>
-</body>
-</html>
+        <div class="ponto-item">
+            <div class="ponto-categoria">🎓 Educação</div>
+            <div>ESPM</div>
+            <div class="ponto-tempo">15 minutos a pé</div>
+        </div>
+
+        <div class="ponto-item">
+            <div class="ponto-categoria">🏥 Saúde</div>
+            <div>Vila Mariana Day Hospital</div>
+            <div class="ponto-tempo">10 minutos a pé</div>
+        </div>
+
+        <div class="ponto-item">
+            <div class="ponto-categoria">🎭 Cultura</div>
+            <div>SESC Vila Mariana</div>
+            <div class="ponto-tempo">15 minutos a pé</div>
+        </div>
+    </div>
+</section>
+
+<script>
+    console.log('Seção Mapa carregada.');
+</script>
